@@ -149,6 +149,24 @@ const Home: NextPage<Props> = ({ hero }) => (
           </div>
         ))}
       </section>
+      <h2 className="text-red-500 font-medium text-2xl mt-8">Talents</h2>
+      <section>
+        {[4, 3, 2, 1].map((level, index) => {
+          const talents = hero.talents.filter(
+            (talent) => talent.level === level
+          )
+
+          return (
+            <div className="flex items-center justify-center mt-4" key={index}>
+              <div className="flex-1 text-right">{talents[0].name}</div>
+              <div className="h-12 w-12 border-2 border-gray-900 flex items-center justify-center rounded-full mx-4 font-semibold text-center">
+                {level * 5 + 5}
+              </div>
+              <div className="flex-1 text-left">{talents[1].name}</div>
+            </div>
+          )
+        })}
+      </section>
     </main>
   </>
 )
