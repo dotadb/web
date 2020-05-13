@@ -10,7 +10,7 @@ export const Header: FunctionComponent = () => {
   const NavLink = ({ label, link }: { label: string; link: string }) => (
     <Link href={link}>
       <a
-        className={`ml-4 p-3 rounded font-medium ${
+        className={`ml-4 p-3 rounded font-medium leading-none ${
           path.indexOf(link) === 0 ? 'text-white bg-red-500' : ''
         }`}>
         {label}
@@ -28,7 +28,6 @@ export const Header: FunctionComponent = () => {
       <nav className="flex -ml-4 mt-8 md:mt-0">
         <NavLink label="Heroes" link="/heroes" />
         <NavLink label="Items" link="/items" />
-        <NavLink label="Abilities" link="/abilities" />
       </nav>
     </header>
   )
