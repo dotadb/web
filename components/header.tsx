@@ -7,6 +7,17 @@ export const Header: FunctionComponent = () => {
 
   const path = asPath.split('?')[0]
 
+  const NavLink = ({ label, link }: { label: string; link: string }) => (
+    <Link href={link}>
+      <a
+        className={`ml-4 p-3 rounded font-medium ${
+          path.indexOf(link) === 0 ? 'text-white bg-red-500' : ''
+        }`}>
+        {label}
+      </a>
+    </Link>
+  )
+
   return (
     <header className="flex flex-col md:flex-row md:items-center justify-between m-8">
       <Link href="/">
@@ -14,39 +25,10 @@ export const Header: FunctionComponent = () => {
           <img className="h-12 w-12" src="/img/dota.svg" />
         </a>
       </Link>
-      <nav className="mt-6 md:mt-0">
-        <Link href="/">
-          <a
-            className={`p-3 rounded font-medium ${
-              path === '/' ? 'text-white bg-red-500' : ''
-            }`}>
-            Search
-          </a>
-        </Link>
-        <Link href="/heroes">
-          <a
-            className={`ml-4 p-3 rounded font-medium ${
-              path.indexOf('/heroes') === 0 ? 'text-white bg-red-500' : ''
-            }`}>
-            Heroes
-          </a>
-        </Link>
-        <Link href="/items">
-          <a
-            className={`ml-4 p-3 rounded font-medium ${
-              path.indexOf('/items') === 0 ? 'text-white bg-red-500' : ''
-            }`}>
-            Items
-          </a>
-        </Link>
-        <Link href="/abilities">
-          <a
-            className={`ml-4 p-3 rounded font-medium ${
-              path.indexOf('/abilities') === 0 ? 'text-white bg-red-500' : ''
-            }`}>
-            Abilities
-          </a>
-        </Link>
+      <nav className="flex -ml-4 mt-8 md:mt-0">
+        <NavLink label="Heroes" link="/heroes" />
+        <NavLink label="Items" link="/items" />
+        <NavLink label="Abilities" link="/abilities" />
       </nav>
     </header>
   )
