@@ -17,7 +17,7 @@ export const Header: FunctionComponent = () => {
       <nav className="mt-6 md:mt-0">
         <Link href="/">
           <a
-            className={`p-3 rounded ${
+            className={`p-3 rounded font-medium ${
               path === '/' ? 'text-white bg-red-500' : ''
             }`}>
             Search
@@ -25,7 +25,7 @@ export const Header: FunctionComponent = () => {
         </Link>
         <Link href="/heroes">
           <a
-            className={`ml-4 p-3 rounded ${
+            className={`ml-4 p-3 rounded font-medium ${
               path.indexOf('/heroes') === 0 ? 'text-white bg-red-500' : ''
             }`}>
             Heroes
@@ -33,7 +33,7 @@ export const Header: FunctionComponent = () => {
         </Link>
         <Link href="/items">
           <a
-            className={`ml-4 p-3 rounded ${
+            className={`ml-4 p-3 rounded font-medium ${
               path.indexOf('/items') === 0 ? 'text-white bg-red-500' : ''
             }`}>
             Items
@@ -41,7 +41,7 @@ export const Header: FunctionComponent = () => {
         </Link>
         <Link href="/abilities">
           <a
-            className={`ml-4 p-3 rounded ${
+            className={`ml-4 p-3 rounded font-medium ${
               path.indexOf('/abilities') === 0 ? 'text-white bg-red-500' : ''
             }`}>
             Abilities
