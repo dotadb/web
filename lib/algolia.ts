@@ -42,29 +42,19 @@ class Algolia {
     } as unknown) as SearchResults
   }
 
-  async heroes(
-    page = 0
-  ): Promise<{
-    current: number
-    heroes: Hero[]
-    pages: number
-  }> {
+  async heroes(): Promise<Hero[]> {
     const {
       results: [heroes]
     } = await this.client.search<Hero>([
       {
         indexName: 'heroes',
         params: {
-          page: page - 1
+          hitsPerPage: 500
         }
       }
     ])
 
-    return {
-      current: heroes.page + 1,
-      heroes: heroes.hits,
-      pages: heroes.nbPages + 1
-    }
+    return heroes.hits
   }
 
   async hero(slug: string): Promise<Hero> {

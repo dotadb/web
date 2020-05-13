@@ -15,6 +15,10 @@ module.exports = {
           'Apple Color Emoji',
           'Segoe UI Emoji'
         ]
+      },
+      width: {
+        'hero-md': 'calc(100% / 4 - 2rem)',
+        'hero-sm': 'calc(100% / 2 - 2rem)'
       }
     }
   },

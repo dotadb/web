@@ -79,11 +79,9 @@ p {
 }
 
 table {
-  @apply bg-gray-900 rounded  text-left align-middle;
-
   td,
   th {
-    @apply p-4;
+    @apply text-left align-middle;
   }
 
   td {

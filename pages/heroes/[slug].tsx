@@ -1,8 +1,8 @@
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
-import { AbilityCard } from '../../components/ability-card'
+import { AbilityCard } from '../../components'
 import { algolia } from '../../lib'
 import { Hero } from '../../types'
 
@@ -10,18 +10,18 @@ interface Props {
   hero: Hero
 }
 
-const PrimaryAttribute = () => (
+const PrimaryAttribute: FunctionComponent<Props> = ({ hero }) => (
   <img
-    className="absolute pointer-events-none ml-4 mt-4"
+    className="absolute pointer-events-none"
     src="/img/attributes/primary.png"
     style={{
-      left: -3,
-      top: -3
+      left: 0,
+      top: hero.attributes.primary === 'str' ? 18 : 2
     }}
   />
 )
 
-const Home: NextPage<Props> = ({ hero }) => (
+const Heroes: NextPage<Props> = ({ hero }) => (
   <>
     <Head>
       <title>{hero.name} / Heroes / Dota</title>
@@ -49,43 +49,49 @@ const Home: NextPage<Props> = ({ hero }) => (
             <tr>
               <td className="relative">
                 <img src="/img/attributes/agi.png" />
-                {hero.attributes.primary === 'agi' && <PrimaryAttribute />}
+                {hero.attributes.primary === 'agi' && (
+                  <PrimaryAttribute hero={hero} />
+                )}
               </td>
-              <td>
+              <td className="pl-4">
                 {hero.attributes.agi.base} + {hero.attributes.agi.gain}
               </td>
               <td>
                 <img className="mx-auto" src="/img/attributes/attack.png" />
               </td>
-              <td>
+              <td className="pl-4">
                 {hero.stats.attack.min} - {hero.stats.attack.max}
               </td>
             </tr>
             <tr>
-              <td className="relative">
+              <td className="relative py-4">
                 <img src="/img/attributes/str.png" />
-                {hero.attributes.primary === 'str' && <PrimaryAttribute />}
+                {hero.attributes.primary === 'str' && (
+                  <PrimaryAttribute hero={hero} />
+                )}
               </td>
-              <td>
+              <td className="pl-4 py-4">
                 {hero.attributes.str.base} + {hero.attributes.str.gain}
               </td>
-              <td>
+              <td className="py-4">
                 <img className="mx-auto" src="/img/attributes/speed.png" />
               </td>
-              <td>{hero.stats.movement.speed}</td>
+              <td className="pl-4 py-4">{hero.stats.movement.speed}</td>
             </tr>
             <tr>
               <td className="relative">
                 <img src="/img/attributes/int.png" />
-                {hero.attributes.primary === 'int' && <PrimaryAttribute />}
+                {hero.attributes.primary === 'int' && (
+                  <PrimaryAttribute hero={hero} />
+                )}
               </td>
-              <td>
+              <td className="pl-4">
                 {hero.attributes.int.base} + {hero.attributes.int.gain}
               </td>
               <td>
                 <img className="mx-auto" src="/img/attributes/defense.png" />
               </td>
-              <td>{hero.stats.armor.base}</td>
+              <td className="pl-4">{hero.stats.armor.base}</td>
             </tr>
           </tbody>
         </table>
@@ -96,47 +102,47 @@ const Home: NextPage<Props> = ({ hero }) => (
           <tbody>
             <tr>
               <th>Attack type</th>
-              <td>{hero.stats.attack.type.toUpperCase()}</td>
+              <td className="pl-4">{hero.stats.attack.type.toUpperCase()}</td>
             </tr>
-            <tr className="border-t border-black">
-              <th>Attack range</th>
-              <td>{hero.stats.attack.range}</td>
+            <tr>
+              <th className="pt-2">Attack range</th>
+              <td className="pl-4 pt-2">{hero.stats.attack.range}</td>
             </tr>
-            <tr className="border-t border-black">
-              <th>Attack rate</th>
-              <td>{hero.stats.attack.rate}</td>
+            <tr>
+              <th className="pt-2">Attack rate</th>
+              <td className="pl-4 pt-2">{hero.stats.attack.rate}</td>
             </tr>
-            <tr className="border-t border-black">
-              <th>Projectile speed</th>
-              <td>{hero.stats.attack.projectileSpeed}</td>
+            <tr>
+              <th className="pt-2">Projectile speed</th>
+              <td className="pl-4 pt-2">{hero.stats.attack.projectileSpeed}</td>
             </tr>
-            <tr className="border-t border-black">
-              <th>Magic resistance</th>
-              <td>{hero.stats.armor.magicResistance}</td>
+            <tr>
+              <th className="pt-2">Magic resistance</th>
+              <td className="pl-4 pt-2">{hero.stats.armor.magicResistance}</td>
             </tr>
-            <tr className="border-t border-black">
-              <th>Base health</th>
-              <td>{hero.stats.health.base}</td>
+            <tr>
+              <th className="pt-2">Base health</th>
+              <td className="pl-4 pt-2">{hero.stats.health.base}</td>
             </tr>
-            <tr className="border-t border-black">
-              <th>Health regen</th>
-              <td>{hero.stats.health.regen}</td>
+            <tr>
+              <th className="pt-2">Health regen</th>
+              <td className="pl-4 pt-2">{hero.stats.health.regen}</td>
             </tr>
-            <tr className="border-t border-black">
-              <th>Base mana</th>
-              <td>{hero.stats.mana.base}</td>
+            <tr>
+              <th className="pt-2">Base mana</th>
+              <td className="pl-4 pt-2">{hero.stats.mana.base}</td>
             </tr>
-            <tr className="border-t border-black">
-              <th>Mana regen</th>
-              <td>{hero.stats.mana.regen}</td>
+            <tr>
+              <th className="pt-2">Mana regen</th>
+              <td className="pl-4 pt-2">{hero.stats.mana.regen}</td>
             </tr>
-            <tr className="border-t border-black">
-              <th>Turn rate</th>
-              <td>{hero.stats.movement.turnRate}</td>
+            <tr>
+              <th className="pt-2">Turn rate</th>
+              <td className="pl-4 pt-2">{hero.stats.movement.turnRate}</td>
             </tr>
-            <tr className="border-t border-black">
-              <th>Legs</th>
-              <td>{hero.stats.movement.legs}</td>
+            <tr>
+              <th className="pt-2">Legs</th>
+              <td className="pl-4 pt-2">{hero.stats.movement.legs}</td>
             </tr>
           </tbody>
         </table>
@@ -183,4 +189,4 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 }
 
-export default Home
+export default Heroes
