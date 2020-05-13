@@ -11,10 +11,10 @@ export const Header: FunctionComponent = () => {
     <header className="flex flex-col md:flex-row md:items-center justify-between m-8">
       <Link href="/">
         <a className="flex items-center">
-          <img className="h-16 w-16" src="/img/dota.svg" />
+          <img className="h-12 w-12" src="/img/dota.svg" />
         </a>
       </Link>
-      <nav className="mt-4 md:mt-0">
+      <nav className="mt-6 md:mt-0">
         <Link href="/">
           <a className={`${path === '/' ? 'text-white' : ''}`}>Search</a>
         </Link>

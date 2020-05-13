@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
 export const Footer: FunctionComponent = () => (
-  <footer className="m-8 text-sm text-gray-700 flex flex-col justify-between md:items-center md:flex-row">
+  <footer className="m-8 text-sm text-gray-700 flex flex-col justify-between md:flex-row">
     <div>
       <p className="mt-2">
         Built by{' '}
