@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next'
-import { useRouter } from 'next/dist/client/router'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 import { Results } from '../components'
