@@ -1,6 +1,6 @@
 import algoliasearch from 'algoliasearch/lite'
 
-import { Hero, SearchResults } from '../types'
+import { Hero, Item, SearchResults } from '../types'
 
 class Algolia {
   client = algoliasearch(
@@ -76,6 +76,21 @@ class Algolia {
     }
 
     return hero
+  }
+
+  async items(): Promise<Item[]> {
+    const {
+      results: [items]
+    } = await this.client.search<Item>([
+      {
+        indexName: 'items',
+        params: {
+          hitsPerPage: 500
+        }
+      }
+    ])
+
+    return items.hits
   }
 }
 

@@ -18,9 +18,13 @@ module.exports = {
       },
       width: {
         'hero-md': 'calc(100% / 4 - 2rem)',
-        'hero-sm': 'calc(100% / 2 - 2rem)'
+        'hero-sm': 'calc(100% / 2 - 2rem)',
+        'item-md': 'calc(100% / 6 - 2rem)',
+        'item-sm': 'calc(100% / 3 - 2rem)'
       }
     }
   },
-  variants: {}
+  variants: {
+    opacity: ['responsive', 'hover', 'focus', 'group-hover']
+  }
 }
