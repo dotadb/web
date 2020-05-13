@@ -1,0 +1,1 @@
+export { algolia } from './algolia'
