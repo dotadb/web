@@ -1,7 +1,6 @@
 // search
 
 export type SearchResults = {
-  abilities: Ability[]
   heroes: Hero[]
   items: Item[]
 }

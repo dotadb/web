@@ -10,15 +10,8 @@ class Algolia {
 
   async search(query: string): Promise<SearchResults> {
     const {
-      results: [abilities, heroes, items]
+      results: [heroes, items]
     } = await this.client.search([
-      {
-        indexName: 'abilities',
-        params: {
-          hitsPerPage: 5
-        },
-        query
-      },
       {
         indexName: 'heroes',
         params: {
@@ -36,7 +29,6 @@ class Algolia {
     ])
 
     return ({
-      abilities: abilities.hits,
       heroes: heroes.hits,
       items: items.hits
     } as unknown) as SearchResults

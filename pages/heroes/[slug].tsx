@@ -151,7 +151,7 @@ const Heroes: NextPage<Props> = ({ hero }) => (
       <section className="-mt-4">
         {hero.abilities.map((ability, index) => (
           <div className="mt-8" key={index}>
-            <AbilityCard ability={ability} full />
+            <AbilityCard ability={ability} />
           </div>
         ))}
       </section>
